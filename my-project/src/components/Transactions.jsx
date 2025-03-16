@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { RiArrowDownSLine, RiShoppingBasketLine, RiNetflixFill, RiGasStationFill, RiRestaurantLine, RiLightbulbLine, RiDownloadLine } from 'react-icons/ri';
+import { RiArrowDownSLine, RiShoppingBasketLine, RiNetflixFill, RiGasStationFill, RiRestaurantLine, RiLightbulbLine, RiDownloadLine, RiCloseLine } from 'react-icons/ri';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
@@ -9,9 +9,16 @@ const Transactions = () => {
   const [minAmount, setMinAmount] = useState('0');
   const [maxAmount, setMaxAmount] = useState('1000');
   const [selectedMonth, setSelectedMonth] = useState('');
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [newTransaction, setNewTransaction] = useState({
+    title: '',
+    amount: '',
+    category: 'Food',
+    date: new Date().toISOString().split('T')[0]
+  });
 
-  // Sample transaction data
-  const allTransactions = [
+  // Sample transaction data - convert to state if you want to modify it
+  const [allTransactions, setAllTransactions] = useState([
     {
       id: 1,
       title: 'Grocery Shopping',
@@ -52,7 +59,44 @@ const Transactions = () => {
       category: 'Utilities',
       icon: RiLightbulbLine,
     },
-  ];
+  ]);
+
+  // Helper function to get icon based on category
+  const getCategoryIcon = (category) => {
+    switch(category) {
+      case 'Food':
+        return RiRestaurantLine;
+      case 'Entertainment':
+        return RiNetflixFill;
+      case 'Transportation':
+        return RiGasStationFill;
+      case 'Utilities':
+        return RiLightbulbLine;
+      default:
+        return RiShoppingBasketLine;
+    }
+  };
+
+  // Handle adding new transaction
+  const handleAddTransaction = (e) => {
+    e.preventDefault();
+    
+    const transaction = {
+      id: allTransactions.length + 1,
+      ...newTransaction,
+      amount: parseFloat(newTransaction.amount),
+      icon: getCategoryIcon(newTransaction.category)
+    };
+
+    setAllTransactions([transaction, ...allTransactions]);
+    setIsAddModalOpen(false);
+    setNewTransaction({
+      title: '',
+      amount: '',
+      category: 'Food',
+      date: new Date().toISOString().split('T')[0]
+    });
+  };
 
   // Get all available months from transactions
   const getAvailableMonths = () => {
@@ -104,7 +148,7 @@ const Transactions = () => {
 
       return matchesCategory && matchesAmount && matchesDate;
     });
-  }, [category, minAmount, maxAmount, dateRange]);
+  }, [category, minAmount, maxAmount, dateRange, allTransactions]);
 
   // Download PDF function
   const downloadTransactionsPDF = () => {
@@ -269,7 +313,10 @@ const Transactions = () => {
         </button>
 
         {/* Add Transaction Button */}
-        <button className="ml-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+        <button 
+          onClick={() => setIsAddModalOpen(true)}
+          className="ml-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+        >
           <span>+</span>
           Add Transaction
         </button>
@@ -307,6 +354,91 @@ const Transactions = () => {
           ))
         )}
       </div>
+
+      {/* Add Transaction Modal */}
+      {isAddModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Add New Transaction</h2>
+              <button 
+                onClick={() => setIsAddModalOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <RiCloseLine className="text-2xl" />
+              </button>
+            </div>
+
+            <form onSubmit={handleAddTransaction}>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-gray-700 mb-2">Title</label>
+                  <input
+                    type="text"
+                    required
+                    value={newTransaction.title}
+                    onChange={(e) => setNewTransaction({...newTransaction, title: e.target.value})}
+                    className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 mb-2">Amount</label>
+                  <input
+                    type="number"
+                    required
+                    step="0.01"
+                    value={newTransaction.amount}
+                    onChange={(e) => setNewTransaction({...newTransaction, amount: e.target.value})}
+                    className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 mb-2">Category</label>
+                  <select
+                    value={newTransaction.category}
+                    onChange={(e) => setNewTransaction({...newTransaction, category: e.target.value})}
+                    className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                  >
+                    <option>Food</option>
+                    <option>Entertainment</option>
+                    <option>Transportation</option>
+                    <option>Utilities</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 mb-2">Date</label>
+                  <input
+                    type="date"
+                    required
+                    value={newTransaction.date}
+                    onChange={(e) => setNewTransaction({...newTransaction, date: e.target.value})}
+                    className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div className="flex gap-4 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsAddModalOpen(false)}
+                    className="flex-1 px-4 py-2 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  >
+                    Add Transaction
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
