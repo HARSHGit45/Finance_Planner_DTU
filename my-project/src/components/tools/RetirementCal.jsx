@@ -46,8 +46,8 @@ const RetirementCal = () => {
 
     const ctx = chartRef.current.getContext('2d');
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(79, 70, 229, 0.2)');
-    gradient.addColorStop(1, 'rgba(79, 70, 229, 0)');
+    gradient.addColorStop(0, 'rgba(2, 82, 65, 0.2)');
+    gradient.addColorStop(1, 'rgba(2, 82, 65,  0)');
 
     const labels = Array.from({ length: yearlyData.length }, (_, i) => currentAge + i);
 
@@ -58,14 +58,14 @@ const RetirementCal = () => {
         datasets: [{
           label: 'Portfolio Value',
           data: yearlyData,
-          borderColor: '#4F46E5',
+          borderColor: '#025241',
           backgroundColor: gradient,
           borderWidth: 2,
           fill: true,
           tension: 0.4,
           pointRadius: 0,
           pointHoverRadius: 6,
-          pointHoverBackgroundColor: '#4F46E5',
+          pointHoverBackgroundColor: '#025241',
           pointHoverBorderColor: '#fff',
           pointHoverBorderWidth: 2,
         }]
@@ -157,11 +157,11 @@ const RetirementCal = () => {
   const totalReturns = futureValue - totalInvestment;
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm">
+    <div className=" rounded-xl p-6 shadow-sm text-emerald-950 border-2 border-emerald-950">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-6">
           <div>
-            <label className="block text-gray-700 mb-2">Current Age</label>
+            <label className="block mb-2">Current Age</label>
             <input
               type="range"
               min="20"
@@ -174,7 +174,7 @@ const RetirementCal = () => {
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Retirement Age</label>
+            <label className="block mb-2">Retirement Age</label>
             <input
               type="range"
               min={currentAge + 1}
@@ -187,27 +187,27 @@ const RetirementCal = () => {
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Monthly Investment</label>
+            <label className="block mb-2">Monthly Investment</label>
             <input
               type="number"
               value={monthlyInvestment}
               onChange={(e) => setMonthlyInvestment(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-950"
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Current Savings</label>
+            <label className="block mb-2">Current Savings</label>
             <input
               type="number"
               value={currentSavings}
               onChange={(e) => setCurrentSavings(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-950"
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Expected Return (%)</label>
+            <label className="block mb-2">Expected Return (%)</label>
             <input
               type="range"
               min="1"
@@ -221,7 +221,7 @@ const RetirementCal = () => {
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Inflation Rate (%)</label>
+            <label className="block mb-2">Inflation Rate (%)</label>
             <input
               type="range"
               min="1"
@@ -241,19 +241,19 @@ const RetirementCal = () => {
           </div>
           
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-gray-600 mb-2">Total Investment</h4>
+            <div className="bg-blue-100 rounded-lg p-4">
+              <h4 className=" mb-2">Total Investment</h4>
               <div className="text-xl font-bold">₹{totalInvestment.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-gray-600 mb-2">Total Returns</h4>
+            <div className="bg-blue-100 rounded-lg p-4">
+              <h4 className=" mb-2">Total Returns</h4>
               <div className="text-xl font-bold text-green-600">
                 ₹{totalReturns.toLocaleString(undefined, { maximumFractionDigits: 0 })}
               </div>
             </div>
-            <div className="col-span-2 bg-blue-50 rounded-lg p-4">
-              <h4 className="text-blue-600 mb-2">Retirement Corpus</h4>
-              <div className="text-2xl font-bold text-blue-600">
+            <div className="col-span-2 bg-blue-100 rounded-lg p-4">
+              <h4 className="mb-2 text-blue-800">Retirement Corpus</h4>
+              <div className="text-2xl font-bold text-blue-800">
                 ₹{futureValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
               </div>
             </div>

@@ -48,7 +48,7 @@ const Insights = () => {
           labels: timeframeData.map(item => item.category),
           datasets: [{
             data: timeframeData.map(item => item.amount),
-            backgroundColor: '#4F46E5',
+            backgroundColor: '#025241',
             borderRadius: 4,
             barThickness: 40,
           }]
@@ -113,20 +113,20 @@ const Insights = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-32 bg-orange-50">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Category Trends</h2>
+        <h2 className="text-2xl font-bold text-emerald-950">Category Trends</h2>
         
         {/* Timeframe Toggle */}
-        <div className="flex bg-gray-100 rounded-lg p-1">
+        <div className="flex rounded-lg p-1">
           {['Daily', 'Weekly', 'Monthly'].map((period) => (
             <button
               key={period}
               onClick={() => handleTimeframeChange(period)}
               className={`px-4 py-2 rounded-lg transition-all ${
                 timeframe === period
-                  ? 'bg-white text-blue-600 shadow'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-emerald-950 text-white/90 shadow'
+                  : 'text-emerald-950'
               }`}
             >
               {period}
@@ -136,7 +136,7 @@ const Insights = () => {
       </div>
 
       {/* Chart Section */}
-      <div className="bg-white rounded-xl p-6 shadow-sm">
+      <div className="rounded-xl p-6 shadow-sm border-2 border-emerald-950">
         <div className="h-[400px] w-full">
           <canvas ref={chartRef}></canvas>
         </div>
@@ -146,11 +146,11 @@ const Insights = () => {
           {data.map((item) => (
             <div key={item.category} className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-                <span className="text-gray-700">{item.category}</span>
+                <div className="w-3 h-3 rounded-full bg-[#025241]"></div>
+                <span className="text-emerald-950">{item.category}</span>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-gray-500">
+                <span className="text-emerald-950">
                  ₹{timeframe === 'Weekly' 
                     ? (item.amount * 7).toFixed(2) 
                     : timeframe === 'Monthly' 

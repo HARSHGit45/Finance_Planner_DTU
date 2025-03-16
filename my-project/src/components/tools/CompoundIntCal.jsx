@@ -54,8 +54,8 @@ const CompoundIntCal = () => {
         datasets: [{
           label: 'Balance',
           data: yearlyData,
-          borderColor: '#4F46E5',
-          backgroundColor: 'rgba(79, 70, 229, 0.1)',
+          borderColor: '#025241',
+          backgroundColor: 'rgba(2, 82, 65, 0.1)',
           fill: true,
         }]
       },
@@ -92,7 +92,7 @@ const CompoundIntCal = () => {
   const { amount, interest } = calculateCompoundInterest();
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm">
+    <div className="border-2 border-emerald-950 rounded-xl p-6 shadow-sm text-emerald-950">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-6">
           <div>
@@ -101,12 +101,12 @@ const CompoundIntCal = () => {
               type="number"
               value={principal}
               onChange={(e) => setPrincipal(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-950"
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Interest Rate (%)</label>
+            <label className="block mb-2">Interest Rate (%)</label>
             <input
               type="range"
               min="1"
@@ -120,7 +120,7 @@ const CompoundIntCal = () => {
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Time Period (Years)</label>
+            <label className="block mb-2">Time Period (Years)</label>
             <input
               type="range"
               min="1"
@@ -133,11 +133,11 @@ const CompoundIntCal = () => {
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Compounding Frequency</label>
+            <label className="block mb-2">Compounding Frequency</label>
             <select
               value={compoundingFrequency}
               onChange={(e) => setCompoundingFrequency(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-950"
             >
               {frequencyOptions.map(option => (
                 <option key={option.value} value={option.value}>
@@ -148,21 +148,21 @@ const CompoundIntCal = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-gray-600 mb-2">Principal Amount</h4>
+            <div className="bg-blue-100 rounded-lg p-4">
+              <h4 className=" mb-2">Principal Amount</h4>
               <div className="text-xl font-bold">₹{principal.toLocaleString()}</div>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-gray-600 mb-2">Total Interest</h4>
+            <div className="bg-blue-100 rounded-lg p-4">
+              <h4 className=" mb-2">Total Interest</h4>
               <div className="text-xl font-bold text-green-600">
                 ₹{interest.toLocaleString(undefined, { maximumFractionDigits: 0 })}
               </div>
             </div>
           </div>
 
-          <div className="bg-blue-50 rounded-lg p-4">
-            <h4 className="text-blue-600 mb-2">Final Amount</h4>
-            <div className="text-2xl font-bold text-blue-600">
+          <div className="bg-blue-100 rounded-lg p-4">
+            <h4 className="text-blue-800 mb-2">Final Amount</h4>
+            <div className="text-2xl font-bold text-blue-800">
               ₹{amount.toLocaleString(undefined, { maximumFractionDigits: 0 })}
             </div>
           </div>
@@ -174,13 +174,13 @@ const CompoundIntCal = () => {
           </div>
 
           {/* Additional Information */}
-          <div className="bg-gray-50 rounded-lg p-4">
+          <div className="border-2 border-emerald-950 rounded-lg p-4">
             <h4 className="font-medium mb-2">Understanding Compound Interest</h4>
-            <p className="text-gray-600 text-sm">
+            <p className=" text-sm">
               Compound interest is calculated on the initial principal and also on the accumulated interest 
               of previous periods. The more frequently interest is compounded, the more your money will grow.
             </p>
-            <div className="mt-4 text-sm text-gray-600">
+            <div className="mt-4 text-sm">
               <div className="flex justify-between">
                 <span>Compounding Frequency:</span>
                 <span className="font-medium">

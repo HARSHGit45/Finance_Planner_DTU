@@ -83,14 +83,12 @@ const HomeAffordCal = () => {
   const { maxHousePrice, maxLoanAmount, maxMonthlyPayment } = calculateAffordability();
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-6">Home Affordability Calculator</h2>
-      
+    <div className="p-6 text-emerald-950">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl p-6 shadow-sm">
+        <div className="border-2 border-emerald-950 rounded-xl p-6 shadow-sm">
           <div className="space-y-6">
             <div>
-              <label className="block text-gray-700 mb-2">Annual Income</label>
+              <label className="block  mb-2">Annual Income</label>
               <input
                 type="number"
                 value={annualIncome}
@@ -100,27 +98,27 @@ const HomeAffordCal = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700 mb-2">Monthly Debts</label>
+              <label className="block  mb-2">Monthly Debts</label>
               <input
                 type="number"
                 value={monthlyDebts}
                 onChange={(e) => setMonthlyDebts(Number(e.target.value))}
-                className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-950"
               />
             </div>
 
             <div>
-              <label className="block text-gray-700 mb-2">Down Payment</label>
+              <label className="block  mb-2">Down Payment</label>
               <input
                 type="number"
                 value={downPayment}
                 onChange={(e) => setDownPayment(Number(e.target.value))}
-                className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-950"
               />
             </div>
 
             <div>
-              <label className="block text-gray-700 mb-2">Interest Rate (%)</label>
+              <label className="block  mb-2">Interest Rate (%)</label>
               <input
                 type="range"
                 min="5"
@@ -134,7 +132,7 @@ const HomeAffordCal = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700 mb-2">Loan Term (Years)</label>
+              <label className="block mb-2">Loan Term (Years)</label>
               <input
                 type="range"
                 min="5"
@@ -148,25 +146,25 @@ const HomeAffordCal = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm">
+        <div className="border-2 border-emerald-950 rounded-xl p-6 shadow-sm">
           <div className="h-[300px] mb-6">
             <canvas ref={chartRef}></canvas>
           </div>
           
           <div className="grid grid-cols-1 gap-4">
-            <div className="bg-blue-50 rounded-lg p-4">
-              <h4 className="text-blue-600 mb-2">Maximum House Price</h4>
-              <div className="text-2xl font-bold text-blue-600">
+            <div className="bg-blue-100 rounded-lg p-4">
+              <h4 className="text-blue-800 mb-2">Maximum House Price</h4>
+              <div className="text-2xl font-bold text-blue-800">
                 ₹{maxHousePrice.toLocaleString()}
               </div>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h4 className="text-gray-600 mb-2">Maximum Loan Amount</h4>
+              <div className="bg-blue-100 rounded-lg p-4">
+                <h4 className=" mb-2">Maximum Loan Amount</h4>
                 <div className="text-xl font-bold">₹{maxLoanAmount.toLocaleString()}</div>
               </div>
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-blue-100 rounded-lg p-4">
                 <h4 className="text-gray-600 mb-2">Monthly Payment</h4>
                 <div className="text-xl font-bold">₹{maxMonthlyPayment.toLocaleString()}</div>
               </div>
@@ -176,20 +174,20 @@ const HomeAffordCal = () => {
       </div>
 
       {/* Additional Information */}
-      <div className="mt-6 bg-white rounded-xl p-6 shadow-sm">
+      <div className="mt-6 border-2 border-emerald-950 rounded-xl p-6 shadow-sm">
         <h3 className="text-lg font-semibold mb-4">Understanding Your Results</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <h4 className="font-medium mb-2">28% Rule</h4>
-            <p className="text-gray-600">Your monthly mortgage payment should not exceed 28% of your gross monthly income.</p>
+          <div className="p-4 bg-purple-100 rounded-lg">
+            <h4 className="font-medium mb-2 text-purple-800">28% Rule</h4>
+            <p className="text-purple-800">Your monthly mortgage payment should not exceed 28% of your gross monthly income.</p>
           </div>
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <h4 className="font-medium mb-2">36% Rule</h4>
-            <p className="text-gray-600">Your total monthly debt payments should not exceed 36% of your gross monthly income.</p>
+          <div className="p-4 bg-green-100 rounded-lg">
+            <h4 className="font-medium mb-2 text-green-800">36% Rule</h4>
+            <p className="text-green-800">Your total monthly debt payments should not exceed 36% of your gross monthly income.</p>
           </div>
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <h4 className="font-medium mb-2">Down Payment</h4>
-            <p className="text-gray-600">A larger down payment can help you afford a more expensive home and reduce monthly payments.</p>
+          <div className="p-4 bg-yellow-100 rounded-lg">
+            <h4 className="font-medium mb-2 text-yellow-800">Down Payment</h4>
+            <p className="text-yellow-800">A larger down payment can help you afford a more expensive home and reduce monthly payments.</p>
           </div>
         </div>
       </div>

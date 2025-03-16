@@ -34,19 +34,19 @@ const Tools = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">Financial Tools</h1>
+    <div className="p-32 bg-orange-50 text-emerald-950">
+      <h1 className="text-2xl font-bold mb-6 ">Financial Tools</h1>
 
       {/* Tools Navigation */}
-      <div className="flex gap-2 overflow-x-auto pb-4 mb-6 bg-gray-100 p-2 rounded-lg">
+      <div className="flex gap-2 overflow-x-auto pb-4 mb-6 p-2 rounded-lg">
         {tools.map((tool) => (
           <button
             key={tool.id}
             onClick={() => setSelectedTool(tool.id)}
             className={`px-4 py-2 rounded-lg whitespace-nowrap transition-all
               ${selectedTool === tool.id
-                ? 'bg-white text-blue-600 shadow'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white shadow'
+                : 'hover:text-gray-600'
               }`}
           >
             {tool.name}

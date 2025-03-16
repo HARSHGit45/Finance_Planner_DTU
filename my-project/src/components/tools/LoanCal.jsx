@@ -174,21 +174,21 @@ const LoanCal = () => {
   const { monthlyPayment, totalPayment, totalInterest } = calculateLoan();
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm">
+    <div className="text-emerald-950 border-2 border-emerald-900 rounded-xl p-6 shadow-sm">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-6">
           <div>
-            <label className="block text-gray-700 mb-2">Loan Amount</label>
+            <label className="block mb-2">Loan Amount</label>
             <input
               type="number"
               value={loanAmount}
               onChange={(e) => setLoanAmount(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-950"
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Interest Rate (%)</label>
+            <label className="block mb-2">Interest Rate (%)</label>
             <input
               type="range"
               min="5"
@@ -202,7 +202,7 @@ const LoanCal = () => {
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Loan Term (Years)</label>
+            <label className="block mb-2">Loan Term (Years)</label>
             <input
               type="range"
               min="1"
@@ -214,27 +214,27 @@ const LoanCal = () => {
             <div className="text-center mt-2">{loanTerm} years</div>
           </div>
 
-          <div className="bg-blue-50 rounded-lg p-4">
-            <h4 className="text-blue-600 mb-2">Monthly Payment</h4>
-            <div className="text-2xl font-bold text-blue-600">
+          <div className="bg-blue-100 rounded-lg p-4">
+            <h4 className="text-blue-800 mb-2">Monthly Payment</h4>
+            <div className="text-2xl font-bold text-blue-800">
               ₹{monthlyPayment.toLocaleString(undefined, { maximumFractionDigits: 0 })}
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-gray-600 mb-2">Total Principal</h4>
-              <div className="text-xl font-bold">₹{loanAmount.toLocaleString()}</div>
+            <div className="bg-blue-100 rounded-lg p-4">
+              <h4 className="text-blue-800 mb-2">Total Principal</h4>
+              <div className="text-xl font-bold text-blue-800">₹{loanAmount.toLocaleString()}</div>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-gray-600 mb-2">Total Interest</h4>
+            <div className="bg-blue-100 rounded-lg p-4">
+              <h4 className=" mb-2">Total Interest</h4>
               <div className="text-xl font-bold text-red-500">
                 ₹{totalInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}
               </div>
             </div>
-            <div className="col-span-2 bg-gray-50 rounded-lg p-4">
-              <h4 className="text-gray-600 mb-2">Total Payment</h4>
-              <div className="text-xl font-bold">
+            <div className="col-span-2 bg-blue-100 rounded-lg p-4">
+              <h4 className=" mb-2 text-blue-800">Total Payment</h4>
+              <div className="text-xl font-bold text-blue-800">
                 ₹{totalPayment.toLocaleString(undefined, { maximumFractionDigits: 0 })}
               </div>
             </div>
@@ -246,9 +246,9 @@ const LoanCal = () => {
             <canvas ref={chartRef}></canvas>
           </div>
           
-          <div className="bg-gray-50 rounded-lg p-4">
+          <div className="border-2 border-emerald-950 rounded-lg p-4">
             <h4 className="font-medium mb-2">Understanding Your Loan</h4>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm ">
               The chart above shows your yearly principal and interest payments. 
               The total height of each bar represents your total yearly payment, 
               split between principal (blue) and interest (red).

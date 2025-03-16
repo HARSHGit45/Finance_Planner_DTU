@@ -50,8 +50,8 @@ const SipCal = () => {
 
     const ctx = chartRef.current.getContext('2d');
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(79, 70, 229, 0.2)');
-    gradient.addColorStop(1, 'rgba(79, 70, 229, 0)');
+    gradient.addColorStop(0, 'rgba(2, 82, 65, 0.2)');
+    gradient.addColorStop(1, 'rgba(2, 82, 65, 0)');
 
     const labels = Array.from({ length: yearlyData.length }, (_, i) => `Yr ${i}`);
 
@@ -62,14 +62,14 @@ const SipCal = () => {
         datasets: [{
           label: 'Portfolio Value',
           data: yearlyData,
-          borderColor: '#4F46E5',
+          borderColor: '#025241',
           backgroundColor: gradient,
           borderWidth: 2,
           fill: true,
           tension: 0.4,
           pointRadius: 0,
           pointHoverRadius: 6,
-          pointHoverBackgroundColor: '#4F46E5',
+          pointHoverBackgroundColor: '#025241',
           pointHoverBorderColor: '#fff',
           pointHoverBorderWidth: 2,
         }]
@@ -159,21 +159,21 @@ const SipCal = () => {
   const { futureValue, totalInvestment, totalReturns } = calculateSIP();
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm">
+    <div className="border-2 border-emerald-950 rounded-xl p-6 shadow-sm text-emerald-950">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-6">
           <div>
-            <label className="block text-gray-700 mb-2">Monthly Investment</label>
+            <label className="block mb-2">Monthly Investment</label>
             <input
               type="number"
               value={monthlyInvestment}
               onChange={(e) => setMonthlyInvestment(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+              className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-950"
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Investment Period (Years)</label>
+            <label className="block mb-2">Investment Period (Years)</label>
             <input
               type="range"
               min="1"
@@ -186,7 +186,7 @@ const SipCal = () => {
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-2">Expected Return (%)</label>
+            <label className="block mb-2">Expected Return (%)</label>
             <input
               type="range"
               min="1"
@@ -200,13 +200,13 @@ const SipCal = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-gray-600 mb-2">Total Investment</h4>
-              <div className="text-xl font-bold">
+            <div className="bg-blue-100 rounded-lg p-4">
+              <h4 className="text-blue-800 mb-2">Total Investment</h4>
+              <div className="text-xl font-bold text-blue-800">
                 ₹{totalInvestment.toLocaleString(undefined, { maximumFractionDigits: 0 })}
               </div>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4">
+            <div className="bg-blue-100 rounded-lg p-4">
               <h4 className="text-gray-600 mb-2">Total Returns</h4>
               <div className="text-xl font-bold text-green-600">
                 ₹{totalReturns.toLocaleString(undefined, { maximumFractionDigits: 0 })}
@@ -214,27 +214,27 @@ const SipCal = () => {
             </div>
           </div>
 
-          <div className="bg-blue-50 rounded-lg p-4">
-            <h4 className="text-blue-600 mb-2">Maturity Amount</h4>
-            <div className="text-2xl font-bold text-blue-600">
+          <div className="bg-blue-100 rounded-lg p-4">
+            <h4 className="text-blue-800 mb-2">Maturity Amount</h4>
+            <div className="text-2xl font-bold text-blue-800">
               ₹{futureValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
             </div>
           </div>
 
           {/* Investment Breakdown */}
-          <div className="bg-gray-50 rounded-lg p-4">
+          <div className="border-2 border-emerald-950 rounded-lg p-4">
             <h4 className="font-medium mb-4">Investment Breakdown</h4>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Monthly Investment</span>
+                <span className="">Monthly Investment</span>
                 <span className="font-medium">₹{monthlyInvestment.toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Yearly Investment</span>
+                <span className="">Yearly Investment</span>
                 <span className="font-medium">₹{(monthlyInvestment * 12).toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Expected Rate</span>
+                <span className="">Expected Rate</span>
                 <span className="font-medium">{expectedReturn}% p.a.</span>
               </div>
             </div>
@@ -246,9 +246,9 @@ const SipCal = () => {
             <canvas ref={chartRef}></canvas>
           </div>
           
-          <div className="bg-gray-50 rounded-lg p-4">
+          <div className="border-2 border-emerald-950 rounded-lg p-4">
             <h4 className="font-medium mb-2">Understanding SIP Returns</h4>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm">
               A Systematic Investment Plan (SIP) helps you invest a fixed amount regularly. 
               The power of compounding and rupee cost averaging can help your wealth grow over time.
             </p>
