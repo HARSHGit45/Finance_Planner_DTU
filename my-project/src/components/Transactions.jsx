@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { RiArrowDownSLine, RiShoppingBasketLine, RiNetflixFill, RiGasStationFill, RiRestaurantLine, RiLightbulbLine, RiDownloadLine, RiCloseLine } from 'react-icons/ri';
+import { MdMiscellaneousServices } from "react-icons/md";
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
@@ -32,16 +33,16 @@ const Transactions = () => {
       title: 'Netflix Subscription',
       date: 'Mar 2, 2023',
       amount: 14.99,
-      category: 'Entertainment',
-      icon: RiNetflixFill,
+      category: 'Miscellaneous',
+      icon: MdMiscellaneousServices,
     },
     {
       id: 3,
       title: 'Gas Station',
       date: 'Mar 5, 2023',
       amount: 45.50,
-      category: 'Transportation',
-      icon: RiGasStationFill,
+      category: 'Miscellaneous',
+      icon: MdMiscellaneousServices ,
     },
     {
       id: 4,
@@ -56,7 +57,7 @@ const Transactions = () => {
       title: 'Electric Bill',
       date: 'Mar 15, 2023',
       amount: 120.00,
-      category: 'Utilities',
+      category: 'Rent',
       icon: RiLightbulbLine,
     },
   ]);
@@ -66,11 +67,10 @@ const Transactions = () => {
     switch(category) {
       case 'Food':
         return RiRestaurantLine;
-      case 'Entertainment':
-        return RiNetflixFill;
-      case 'Transportation':
-        return RiGasStationFill;
-      case 'Utilities':
+      case 'Miscellaneous':
+        return MdMiscellaneousServices;
+
+      case 'Rent':
         return RiLightbulbLine;
       default:
         return RiShoppingBasketLine;
@@ -344,7 +344,7 @@ const Transactions = () => {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-green-600 font-medium">${transaction.amount.toFixed(2)}</span>
+                <span className="text-green-600 font-medium">₹{transaction.amount.toFixed(2)}</span>
                 <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600">
                   {transaction.category}
                 </span>
@@ -401,10 +401,11 @@ const Transactions = () => {
                     onChange={(e) => setNewTransaction({...newTransaction, category: e.target.value})}
                     className="w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
                   >
+                    <option>Rent</option>
                     <option>Food</option>
-                    <option>Entertainment</option>
-                    <option>Transportation</option>
-                    <option>Utilities</option>
+                    <option>Education</option>
+                    <option>Clothing</option>
+                    <option>Miscellaneous</option>
                   </select>
                 </div>
 
