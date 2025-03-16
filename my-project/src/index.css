@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  background: #012c23;
+  font-family: "Work Sans", sans-serif;
+  }
+
+  .head {
+    font-family: "Sriracha", cursive;
+  }
+
+  .chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
