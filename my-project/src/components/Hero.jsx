@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { BsChatDotsFill } from "react-icons/bs"; 
 import Navbar from './Navbar';
 import hero2 from '../assets/hero2.svg';
 import hero1 from '../assets/hero1.png';
 
 const Hero = () => {
   return (
-    <div className="min-h-screen bg-[#012c23] overflow-hidden">
+    <div className="min-h-screen bg-[#012c23] overflow-hidden relative">
       <div className="relative">
         <Navbar />
         
@@ -27,7 +28,6 @@ const Hero = () => {
                         <span className=" font-semibold">money</span>
                     </span>
                 </div>
-
                 {' '}life?
               </motion.h1>
               
@@ -59,14 +59,12 @@ const Hero = () => {
             </div>
             
             <div className="relative mt-24 w-full max-w-[500px] mx-auto">
-    
               <img 
                 src={hero2} 
                 alt="Budget Interface Foreground" 
                 className="relative w-full left-6 transform rotate-5 z-10 scale-115"
               />
               
-          
               <motion.img 
                 src={hero1} 
                 alt="Budget Interface Background" 
@@ -81,7 +79,6 @@ const Hero = () => {
                   ease: "easeInOut" 
                 }}
               />
-              
               
               <motion.div 
                 className="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 w-64 h-8 bg-black blur-lg rounded-full z-0"
@@ -100,10 +97,17 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        
+
+        {/* Chatbot Icon */}
+        <Link 
+          to="/chatbot"
+          className="fixed bottom-16 z-20 left-12 bg-emerald-950 text-orange-50 p-3 rounded-full shadow-lg transition"
+        >
+          <BsChatDotsFill size={30} />
+        </Link>
+
         {/* Dual Wave Decoration */}
         <div className="absolute -bottom-28 left-0 right-0">
-          {/* Back Wave */}
           <svg 
             viewBox="0 0 1440 320" 
             className="w-full absolute bottom-2 opacity-50"
@@ -116,7 +120,6 @@ const Hero = () => {
             ></path>
           </svg>
 
-          {/* Front Wave */}
           <svg 
             viewBox="0 0 1440 320" 
             className="w-full relative"

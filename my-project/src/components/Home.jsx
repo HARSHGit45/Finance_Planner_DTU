@@ -132,7 +132,7 @@ const Home = () => {
         <div className='bg-orange-50 rounded-lg shadow-md p-6 w-full md:w-1/3 h-[300px] flex flex-col items-center justify-center'>
             <h2 className='text-xl font-bold mb-3'>Net Worth</h2>
             <p className='text-4xl font-bold text-green-600'>
-                ${netWorth.toLocaleString()}
+            ₹{netWorth.toLocaleString()}
             </p>
         </div>
 
@@ -141,19 +141,19 @@ const Home = () => {
             <div className='space-y-3 flex-grow flex flex-col justify-center'>
                 <div className='flex justify-between items-center'>
                     <span className='font-medium'>Checking</span>
-                    <span className=''>${accounts.checking.toLocaleString()}</span>
+                    <span className=''>₹{accounts.checking.toLocaleString()}</span>
                 </div>
                 <div className='flex justify-between items-center'>
                     <span className='font-medium'>Savings</span>
-                    <span className=''>${accounts.savings.toLocaleString()}</span>
+                    <span className=''>₹{accounts.savings.toLocaleString()}</span>
                 </div>
                 <div className='flex justify-between items-center'>
                     <span className='font-medium'>Investment</span>
-                    <span className=''>${accounts.investment.toLocaleString()}</span>
+                    <span className=''>₹{accounts.investment.toLocaleString()}</span>
                 </div>
                 <div className='flex justify-between items-center'>
                     <span className='font-medium'>Cash</span>
-                    <span className=''>${accounts.cash.toLocaleString()}</span>
+                    <span className=''>₹{accounts.cash.toLocaleString()}</span>
                 </div>
             </div>
         </div>
