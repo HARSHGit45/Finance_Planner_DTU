@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Expenses from './components/Expenses';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/signup" element={<Signup />} /> 
             <Route path="/login" element={<Login />} /> 
             <Route path="/profile" element={<Expenses />} /> 
+            <Route path="/chatbot" element={<ChatBot />} /> 
           </Routes>
           <Footer />
         </main>
