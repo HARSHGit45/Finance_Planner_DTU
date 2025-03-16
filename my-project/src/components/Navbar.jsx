@@ -44,9 +44,9 @@ const Navbar = () => {
         <Link to="/" className="text-black text-xl font-bold">FinancePro</Link>
         
         <div className="hidden md:flex items-center space-x-6">
-          <NavLink to="/">Dashboard</NavLink>
-          <NavLink to="/insights">Insights</NavLink>
-          <NavLink to="/tools">Tools</NavLink>
+          <Link to="/">Dashboard</Link>
+          <Link to="/insights">Insights</Link>
+          <Link to="/tools">Tools</Link>
         </div>
         
         <div className="hidden md:flex items-center space-x-4">
