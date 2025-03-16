@@ -5,3 +5,14 @@
 :root {
     background: #000000;
   }
+
+  .chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
