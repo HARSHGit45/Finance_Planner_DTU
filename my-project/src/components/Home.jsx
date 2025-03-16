@@ -49,16 +49,16 @@ const Home = () => {
     datasets: [{
       label: `${timeframe.charAt(0).toUpperCase() + timeframe.slice(1)} Spending`,
       data: spendingData[timeframe].data,
-      borderColor: 'rgb(59, 130, 246)',
-      backgroundColor: 'rgba(59, 130, 246, 0.1)',
+      borderColor: 'rgb(2, 82, 65)',
+      backgroundColor: 'rgba(2, 82, 65, 0.2)',
       fill: true,
       borderWidth: 2,
-      pointBackgroundColor: 'rgb(59, 130, 246)',
+      pointBackgroundColor: 'rgb(2, 82, 65)',
       pointBorderColor: '#fff',
       pointBorderWidth: 2,
       pointRadius: 4,
       pointHoverRadius: 6,
-      pointHoverBackgroundColor: 'rgb(59, 130, 246)',
+      pointHoverBackgroundColor: 'rgb(2, 82, 65)',
       pointHoverBorderColor: '#fff',
       pointHoverBorderWidth: 2,
       tension: 0.4
@@ -128,44 +128,44 @@ const Home = () => {
   };
 
   return (
-    <div className='flex flex-col md:flex-row gap-6 items-stretch justify-center min-h-screen p-4 mt-20'>
-        <div className='bg-white rounded-lg shadow-md p-6 w-full md:w-1/3 h-[400px] flex flex-col items-center justify-center'>
+    <div className='flex flex-col md:flex-row gap-6 items-stretch justify-center min-h-screen p-32 text-emerald-950'>
+        <div className='bg-orange-50 rounded-lg shadow-md p-6 w-full md:w-1/3 h-[300px] flex flex-col items-center justify-center'>
             <h2 className='text-xl font-bold mb-3'>Net Worth</h2>
             <p className='text-4xl font-bold text-green-600'>
                 ${netWorth.toLocaleString()}
             </p>
         </div>
 
-        <div className='bg-white rounded-lg shadow-md p-6 w-full md:w-1/3 h-[400px] flex flex-col'>
+        <div className='bg-orange-50 rounded-lg shadow-md p-6 w-full md:w-1/3 h-[300px] flex flex-col'>
             <h2 className='text-xl font-bold mb-4 text-center'>Account Balances</h2>
             <div className='space-y-3 flex-grow flex flex-col justify-center'>
                 <div className='flex justify-between items-center'>
                     <span className='font-medium'>Checking</span>
-                    <span className='text-gray-700'>${accounts.checking.toLocaleString()}</span>
+                    <span className=''>${accounts.checking.toLocaleString()}</span>
                 </div>
                 <div className='flex justify-between items-center'>
                     <span className='font-medium'>Savings</span>
-                    <span className='text-gray-700'>${accounts.savings.toLocaleString()}</span>
+                    <span className=''>${accounts.savings.toLocaleString()}</span>
                 </div>
                 <div className='flex justify-between items-center'>
                     <span className='font-medium'>Investment</span>
-                    <span className='text-gray-700'>${accounts.investment.toLocaleString()}</span>
+                    <span className=''>${accounts.investment.toLocaleString()}</span>
                 </div>
                 <div className='flex justify-between items-center'>
                     <span className='font-medium'>Cash</span>
-                    <span className='text-gray-700'>${accounts.cash.toLocaleString()}</span>
+                    <span className=''>${accounts.cash.toLocaleString()}</span>
                 </div>
             </div>
         </div>
 
-        <div className='bg-white rounded-lg shadow-md p-6 w-full md:w-1/3 h-[400px] flex flex-col'>
+        <div className='bg-orange-50 rounded-lg shadow-md p-6 w-full md:w-1/3 h-[400px] flex flex-col'>
             <h2 className='text-xl font-bold mb-4 text-center'>Spending Trends</h2>
             <div className='flex justify-center mb-4'>
                 <div className='bg-gray-200 p-1 rounded-lg inline-flex'>
                     <button 
                         className={`px-4 py-2 rounded-md transition-all duration-200 ${
                             timeframe === 'daily' 
-                            ? 'bg-white text-blue-800 shadow-sm transform translate-y-[1px]' 
+                            ? 'bg-white text-emerald-950 shadow-sm transform translate-y-[1px]' 
                             : 'text-gray-600 hover:text-gray-800'
                         }`}
                         onClick={() => setTimeframe('daily')}
@@ -175,7 +175,7 @@ const Home = () => {
                     <button 
                         className={`px-4 py-2 rounded-md transition-all duration-200 ${
                             timeframe === 'weekly' 
-                            ? 'bg-white text-blue-800 shadow-sm transform translate-y-[1px]' 
+                            ? 'bg-white text-emerald-950 shadow-sm transform translate-y-[1px]' 
                             : 'text-gray-600 hover:text-gray-800'
                         }`}
                         onClick={() => setTimeframe('weekly')}
