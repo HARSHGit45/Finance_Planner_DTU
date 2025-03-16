@@ -5,11 +5,13 @@ import Insights from './components/Insights';
 import Tools from './components/Tools';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Signup from './components/Signup';
+import Login from './components/Login';
 
 function App() {
   return (
     <Router>
-      <div className="flex min-h-screen bg-gray-50">
         <main className="flex-1 transition-all duration-300">
         <Navbar />
           <Routes>
@@ -18,9 +20,11 @@ function App() {
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/insights" element={<Insights />} />
             <Route path="/tools" element={<Tools />} /> 
+            <Route path="/signup" element={<Signup />} /> 
+            <Route path="/login" element={<Login />} /> 
           </Routes>
+          <Footer />
         </main>
-      </div>
     </Router>
   );
 }

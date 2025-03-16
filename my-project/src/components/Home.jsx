@@ -165,7 +165,7 @@ const Home = () => {
                     <button 
                         className={`px-4 py-2 rounded-md transition-all duration-200 ${
                             timeframe === 'daily' 
-                            ? 'bg-white text-blue-600 shadow-sm transform translate-y-[1px]' 
+                            ? 'bg-white text-blue-800 shadow-sm transform translate-y-[1px]' 
                             : 'text-gray-600 hover:text-gray-800'
                         }`}
                         onClick={() => setTimeframe('daily')}
@@ -175,7 +175,7 @@ const Home = () => {
                     <button 
                         className={`px-4 py-2 rounded-md transition-all duration-200 ${
                             timeframe === 'weekly' 
-                            ? 'bg-white text-blue-600 shadow-sm transform translate-y-[1px]' 
+                            ? 'bg-white text-blue-800 shadow-sm transform translate-y-[1px]' 
                             : 'text-gray-600 hover:text-gray-800'
                         }`}
                         onClick={() => setTimeframe('weekly')}
