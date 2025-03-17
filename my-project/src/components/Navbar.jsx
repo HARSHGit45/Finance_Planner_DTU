@@ -2,25 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronDown, FiMenu, FiUser } from 'react-icons/fi';
+import { useLocation } from "react-router-dom";
 
-const Dropdown = ({ items, isOpen }) => (
-  <AnimatePresence>
-    {isOpen && (
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50"
-      >
-        {items.map((item, index) => (
-          <Link key={index} to={item.path} className="block px-4 py-2 text-gray-700 hover:bg-gray-50">
-            {item.title}
-          </Link>
-        ))}
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
 
 const ProfileDropdown = ({ isOpen, onLogout }) => (
   <AnimatePresence>
@@ -42,6 +25,9 @@ const ProfileDropdown = ({ isOpen, onLogout }) => (
 );
 
 const Navbar = () => {
+  const location = useLocation();
+  if (location.pathname === "/login" || location.pathname === "/signup") return null;
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
 
